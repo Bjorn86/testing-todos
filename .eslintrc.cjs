@@ -1,5 +1,5 @@
-const fsdRules = require('./config/eslint/config-fsd-rules.cjs');
 const customRules = require('./config/eslint/custom-rules.cjs');
+
 module.exports = {
   env: {
     browser: true,
@@ -79,7 +79,6 @@ module.exports = {
   },
   rules: {
     ...customRules,
-    ...fsdRules,
   },
   overrides: [
     {

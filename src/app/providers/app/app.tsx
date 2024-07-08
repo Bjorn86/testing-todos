@@ -1,9 +1,11 @@
 import { StrictMode } from 'react';
 import { RouterProvider } from 'app/providers/router/router-provider';
-import 'app/styles/index.scss';
+import { StoreProvider } from 'app/providers/store/store-provider';
 
 export const App = () => (
   <StrictMode>
-    <RouterProvider />
+    <StoreProvider>
+      <RouterProvider />
+    </StoreProvider>
   </StrictMode>
 );
