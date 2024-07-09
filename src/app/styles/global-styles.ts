@@ -76,6 +76,7 @@ export const GlobalStyles = createGlobalStyle`
     --fs-m: 20px;
     --fs-l: 24px;
     --fs-xl: 32px;
+    --fs-xxl: 48px;
 
     // LINE HEIGHTS
     --lh-xs: 12px;
@@ -83,6 +84,7 @@ export const GlobalStyles = createGlobalStyle`
     --lh-m: 24px;
     --lh-l: 36px;
     --lh-xl: 48px;
+    --lh-xxl: 60px;
 
     // FONT WEIGHTS
     --fw-300: 300;
@@ -101,7 +103,7 @@ export const GlobalStyles = createGlobalStyle`
     --br-xxl: 24px;
 
     // SIZES
-    --base-width: 1440px;
+    --base-width: 980px;
   }
 
   * {
