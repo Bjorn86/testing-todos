@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-dark-white);
+  background-color: var(--color-dark-grey);
 `;
 
 export const AppLayout = () => (
