@@ -1,1 +1,2 @@
-export { auth, db } from './init';
+export { db } from './init';
+export { createTodo } from './firebase-api';

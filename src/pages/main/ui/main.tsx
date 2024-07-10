@@ -1,12 +1,12 @@
-import { useForm, Controller } from 'react-hook-form';
 import { styled } from 'styled-components';
-import { Input } from 'shared/ui/input/ui/input';
+import { CreateTodo } from 'features/create-todo';
 import { TEXT } from '../model/constants';
 
 const Container = styled.main`
   width: var(--base-width);
   display: flex;
   flex-direction: column;
+  gap: 20px;
 `;
 
 const Title = styled.h1`
@@ -18,30 +18,19 @@ const Title = styled.h1`
   color: var(--color-dark-green);
 `;
 
+const TodosWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+`;
+
 export const Main = () => {
-  const { control, handleSubmit, reset } = useForm({
-    defaultValues: {
-      test: '',
-    },
-  });
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmit = (data: any) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
-    reset();
-  };
-
   return (
     <Container>
       <Title>{TEXT.title}</Title>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          control={control}
-          name='test'
-          render={({ field }) => <Input type='text' {...field} placeholder={'some'} />}
-        />
-      </form>
+      <TodosWrapper aria-label={TEXT.sectionLabel}>
+        <CreateTodo />
+      </TodosWrapper>
     </Container>
   );
 };
