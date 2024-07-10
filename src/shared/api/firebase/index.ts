@@ -1,2 +1,2 @@
 export { db } from './init';
-export { createTodo } from './firebase-api';
+export { createTodo, getTodos, updateTodos } from './firebase-api';
