@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { Todo } from 'entities/todo';
+import { ToggleTodo } from 'features/toggle-todo';
 
 const TodoListItem = styled.li`
   width: 100%;
@@ -10,13 +11,15 @@ const TodoListItem = styled.li`
 `;
 
 interface Props {
+  id: string;
   completed: boolean;
   value: string;
 }
 
-export const TodoItem = ({ completed, value }: Props) => {
+export const TodoItem = ({ id, completed, value }: Props) => {
   return (
     <TodoListItem>
+      <ToggleTodo completed={completed} id={id} />
       <Todo completed={completed} value={value} />
     </TodoListItem>
   );

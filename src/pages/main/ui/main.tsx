@@ -24,6 +24,7 @@ const Title = styled.h1`
 const TodosWrapper = styled.section`
   display: flex;
   flex-direction: column;
+  background-color: var(--color-white);
   box-shadow: var(--shadow);
 `;
 
@@ -35,6 +36,7 @@ const TodosList = styled.ul`
 `;
 
 const Info = styled.p`
+  padding: 15px;
   font-family: var(--family);
   font-size: var(--fs-l);
   font-weight: var(--fw-300);
@@ -52,10 +54,10 @@ export const Main = () => {
         <CreateTodo />
         {isLoading && <Preloader />}
         {isError && <Info>{TEXT.error}</Info>}
-        {todos.length && (
+        {todos.length > 0 && (
           <TodosList>
             {todos.map((todo) => (
-              <TodoItem key={todo.id} completed={todo.completed} value={todo.value} />
+              <TodoItem key={todo.id} id={todo.id} completed={todo.completed} value={todo.value} />
             ))}
           </TodosList>
         )}

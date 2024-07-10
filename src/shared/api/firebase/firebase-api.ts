@@ -42,3 +42,29 @@ export const updateTodos = (cb: (data: Todo[]) => void) => {
 
   return unmount;
 };
+
+export const updateTodoStatus = async (id: string, completed: boolean) => {
+  const todosRef = doc(db, 'todos', 'todos');
+  const snapshot = await getDoc(todosRef);
+
+  if (snapshot.exists()) {
+    const todosArr = snapshot.data().todosArr;
+    const todoIndex = todosArr.findIndex((todo: Todo) => todo.id === id);
+
+    if (todoIndex !== -1) {
+      const updatedTodosArr = [...todosArr];
+      updatedTodosArr[todoIndex] = {
+        ...updatedTodosArr[todoIndex],
+        completed,
+      };
+
+      await updateDoc(todosRef, {
+        todosArr: updatedTodosArr,
+      });
+    } else {
+      throw new Error('Todo not found!');
+    }
+  } else {
+    throw new Error('No such document!');
+  }
+};

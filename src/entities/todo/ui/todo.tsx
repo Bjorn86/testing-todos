@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
 const TodoText = styled.p<{ $completed: boolean }>`
+  max-width: 714px;
   width: 100%;
   padding: 15px;
   font-family: var(--family);
