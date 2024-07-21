@@ -8,6 +8,10 @@ const Switcher = styled.button`
   padding: 15px;
   align-self: center;
   background-color: var(--color-white);
+  transition: opacity 0.5s;
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 
 interface Props {

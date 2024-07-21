@@ -68,3 +68,12 @@ export const updateTodoStatus = async (id: string, completed: boolean) => {
     throw new Error('No such document!');
   }
 };
+
+export const removeCompletedTodos = async (data: Todo[]) => {
+  const todosRef = doc(db, 'todos', 'todos');
+  const updatedTodosArr = data.filter((todo: Todo) => !todo.completed);
+
+  await updateDoc(todosRef, {
+    todosArr: updatedTodosArr,
+  });
+};

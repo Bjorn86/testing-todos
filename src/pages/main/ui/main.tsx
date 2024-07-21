@@ -1,8 +1,10 @@
+import { useContext } from 'react';
 import { styled } from 'styled-components';
 import { CreateTodo } from 'features/create-todo';
+import { TodosContext } from 'shared/api/context';
 import { Preloader } from 'shared/ui/preloader';
+import { ControlPanel } from 'widgets/control-panel';
 import { TodoItem } from 'widgets/todo-item';
-import { useGetTodos } from '../hooks/useGetTodos';
 import { TEXT } from '../model/constants';
 
 const Container = styled.main`
@@ -45,7 +47,7 @@ const Info = styled.p`
 `;
 
 export const Main = () => {
-  const { todos, isLoading, isError } = useGetTodos();
+  const { filteredTodos, isError, isLoading } = useContext(TodosContext);
 
   return (
     <Container>
@@ -54,13 +56,16 @@ export const Main = () => {
         <CreateTodo />
         {isLoading && <Preloader />}
         {isError && <Info>{TEXT.error}</Info>}
-        {todos.length > 0 && (
+        {filteredTodos.length > 0 ? (
           <TodosList>
-            {todos.map((todo) => (
+            {filteredTodos.map((todo) => (
               <TodoItem key={todo.id} id={todo.id} completed={todo.completed} value={todo.value} />
             ))}
           </TodosList>
+        ) : (
+          <Info>{TEXT.noContent}</Info>
         )}
+        <ControlPanel />
       </TodosWrapper>
     </Container>
   );

@@ -61,6 +61,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-light-grey: #e0e0e0;
     --color-very-light-grey: #f2f2f2;
     --color-white: #ffffff;
+    --color-black: #000000;
     --shadow: 0px 0px 5px hsla(0, 0%, 0%, 0.2);
 
     // FONT SIZES

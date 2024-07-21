@@ -17,6 +17,12 @@ export function buildPlugins(options: BuildOptions): Configuration['plugins'] {
     }),
     new DefinePlugin({
       __MODE__: JSON.stringify(mode),
+      __API_KEY__: JSON.stringify(process.env.API_KEY),
+      __AUTH_DOMAIN__: JSON.stringify(process.env.AUTH_DOMAIN),
+      __PROJECT_ID__: JSON.stringify(process.env.PROJECT_ID),
+      __STORAGE_BUCKET__: JSON.stringify(process.env.STORAGE_BUCKET),
+      __MESSAGING_SENDER_ID__: JSON.stringify(process.env.MESSAGING_SENDER_ID),
+      __APP_ID__: JSON.stringify(process.env.APP_ID),
     }),
     new CopyPlugin({
       patterns: [
