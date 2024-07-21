@@ -19,7 +19,7 @@ const Title = styled.h1`
   font-family: var(--family);
   font-size: var(--fs-xxl);
   font-weight: var(--fw-300);
-  line-height: var(--lh-xxl);
+  line-height: var(--lh-xl);
   color: var(--color-dark-green);
 `;
 
@@ -42,7 +42,8 @@ const Info = styled.p`
   font-family: var(--family);
   font-size: var(--fs-l);
   font-weight: var(--fw-300);
-  line-height: var(--lh-l);
+  line-height: var(--lh-m);
+  color: var(--color-black);
   text-align: center;
 `;
 

@@ -9,7 +9,7 @@ const InputField = styled.input`
   font-family: var(--family);
   font-size: var(--fs-m);
   font-weight: var(--fw-400);
-  line-height: var(--lh-l);
+  line-height: var(--lh-m);
   color: var(--color-black);
   &::placeholder {
     color: var(--color-dark-grey);

@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { Preloader } from 'shared/ui/preloader';
 
 const Container = styled.div`
   max-width: 100vw;
@@ -16,7 +17,7 @@ const Container = styled.div`
 
 export const AppLayout = () => (
   <Container>
-    <Suspense fallback={'Loading...'}>
+    <Suspense fallback={<Preloader />}>
       <Outlet />
     </Suspense>
   </Container>

@@ -7,7 +7,7 @@ const TodoText = styled.p<{ $completed: boolean }>`
   font-family: var(--family);
   font-size: var(--fs-m);
   font-weight: var(--fw-400);
-  line-height: var(--lh-l);
+  line-height: var(--lh-m);
   text-decoration: ${(props) => (props.$completed ? 'line-through' : 'none')};
   color: ${(props) => (props.$completed ? 'var(--color-dark-grey)' : 'var(--color-black)')};
   word-wrap: break-word;
