@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { GlobalStyles } from 'app/styles/global-styles';
 
 const Container = styled.div`
   max-width: 100vw;
@@ -16,12 +15,9 @@ const Container = styled.div`
 `;
 
 export const AppLayout = () => (
-  <>
-    <GlobalStyles />
-    <Container>
-      <Suspense fallback={'Loading...'}>
-        <Outlet />
-      </Suspense>
-    </Container>
-  </>
+  <Container>
+    <Suspense fallback={'Loading...'}>
+      <Outlet />
+    </Suspense>
+  </Container>
 );
