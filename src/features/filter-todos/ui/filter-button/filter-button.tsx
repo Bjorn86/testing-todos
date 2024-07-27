@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import { styled } from 'styled-components';
+import testUtils from 'shared/lib/test';
 
 const Button = styled.button<{ $isActive: boolean }>`
   padding: 5px 8px;
@@ -21,11 +22,14 @@ const Button = styled.button<{ $isActive: boolean }>`
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   isActive: boolean;
+  testId?: string;
 }
 
-export const FilterButton = ({ text, isActive }: Props) => {
+export const FilterButton = ({ text, isActive, testId }: Props) => {
+  const filterBtnTestId = testUtils.getTestIdAttribute('filter-btn', testId);
+
   return (
-    <Button type='button' $isActive={isActive}>
+    <Button type='button' $isActive={isActive} {...filterBtnTestId}>
       {text}
     </Button>
   );

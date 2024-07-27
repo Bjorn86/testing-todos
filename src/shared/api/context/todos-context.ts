@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { Todo } from 'shared/api/firebase';
 
-interface TodosContextValue {
+export interface TodosContextValue {
   todos: Todo[];
   filteredTodos: Todo[];
   setFilteredTodos: (data: Todo[]) => void;

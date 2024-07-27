@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import 'jest-styled-components';
 import 'whatwg-fetch';
 
 window.matchMedia = jest.fn().mockImplementation((query) => ({

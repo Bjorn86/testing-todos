@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { styled } from 'styled-components';
 import { TodosContext } from 'shared/api/context';
 import { removeCompletedTodos } from 'shared/api/firebase';
+import testUtils from 'shared/lib/test';
 import { TEXT } from '../model/constants';
 
 const Button = styled.button`
@@ -20,10 +21,15 @@ const Button = styled.button`
 
 export const ClearCompletedTodos = () => {
   const { todos } = useContext(TodosContext);
+  const clearBtnTestId = testUtils.getTestIdAttribute('btn', 'clear');
 
   const handleClearCompletedTodos = () => {
     removeCompletedTodos(todos);
   };
 
-  return <Button onClick={handleClearCompletedTodos}>{TEXT.clear}</Button>;
+  return (
+    <Button onClick={handleClearCompletedTodos} {...clearBtnTestId}>
+      {TEXT.clear}
+    </Button>
+  );
 };

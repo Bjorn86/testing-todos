@@ -1,6 +1,7 @@
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { styled } from 'styled-components';
 import { createTodo } from 'shared/api/firebase';
+import testUtils from 'shared/lib/test';
 import { Icon, Icons } from 'shared/ui/icon';
 import { Input } from 'shared/ui/input';
 import { TEXT } from '../model/constants';
@@ -28,6 +29,7 @@ const IconWrapper = styled.div`
 `;
 
 export const CreateTodo = () => {
+  const formTestId = testUtils.getTestIdAttribute('form', 'create-todo');
   const { control, handleSubmit, reset } = useForm<CreateTodoFormArguments>({
     defaultValues: {
       todo: '',
@@ -40,7 +42,7 @@ export const CreateTodo = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} {...formTestId}>
       <Label htmlFor='todo'>
         <IconWrapper>
           <Icon icon={Icons.CHEVRON_DOWN} width='24px' height='24px' />
@@ -54,6 +56,7 @@ export const CreateTodo = () => {
               id='todo'
               placeholder={TEXT.placeholder}
               maxLength={100}
+              testId='create-todo'
               {...field}
             />
           )}

@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { styled } from 'styled-components';
 import { CreateTodo } from 'features/create-todo';
 import { TodosContext } from 'shared/api/context';
+import { Todo } from 'shared/api/firebase';
+import testUtils from 'shared/lib/test';
 import { Preloader } from 'shared/ui/preloader';
 import { ControlPanel } from 'widgets/control-panel';
 import { TodoItem } from 'widgets/todo-item';
@@ -49,23 +51,31 @@ const Info = styled.p`
 
 export const Main = () => {
   const { filteredTodos, isError, isLoading } = useContext(TodosContext);
+  const errorTestId = testUtils.getTestIdAttribute('main-page', 'error');
+  const listTestId = testUtils.getTestIdAttribute('main-page', 'list');
+  const noContentTestId = testUtils.getTestIdAttribute('main-page', 'no-content');
+  const canRenderTodos = !isError && !isLoading;
+
+  const renderTodos = (todos: Todo[]) => {
+    return filteredTodos.length > 0 ? (
+      <TodosList {...listTestId}>
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} id={todo.id} completed={todo.completed} value={todo.value} />
+        ))}
+      </TodosList>
+    ) : (
+      <Info {...noContentTestId}>{TEXT.noContent}</Info>
+    );
+  };
 
   return (
     <Container>
       <Title>{TEXT.title}</Title>
       <TodosWrapper aria-label={TEXT.sectionLabel}>
         <CreateTodo />
-        {isLoading && <Preloader />}
-        {isError && <Info>{TEXT.error}</Info>}
-        {filteredTodos.length > 0 ? (
-          <TodosList>
-            {filteredTodos.map((todo) => (
-              <TodoItem key={todo.id} id={todo.id} completed={todo.completed} value={todo.value} />
-            ))}
-          </TodosList>
-        ) : (
-          <Info>{TEXT.noContent}</Info>
-        )}
+        {isLoading && <Preloader testId='main-page' />}
+        {isError && <Info {...errorTestId}>{TEXT.error}</Info>}
+        {canRenderTodos && renderTodos(filteredTodos)}
         <ControlPanel />
       </TodosWrapper>
     </Container>

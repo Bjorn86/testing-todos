@@ -5,7 +5,7 @@ export const FILTER = {
 };
 
 export const BUTTONS = [
-  { id: 1, text: FILTER.ALL },
-  { id: 2, text: FILTER.ACTIVE },
-  { id: 3, text: FILTER.COMPLETED },
+  { id: '1', text: FILTER.ALL },
+  { id: '2', text: FILTER.ACTIVE },
+  { id: '3', text: FILTER.COMPLETED },
 ];

@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import testUtils from 'shared/lib/test';
 
 const TodoText = styled.p<{ $completed: boolean }>`
   max-width: 714px;
@@ -19,5 +20,11 @@ interface Props {
 }
 
 export const Todo = ({ completed, value }: Props) => {
-  return <TodoText $completed={completed}>{value}</TodoText>;
+  const todoTestId = testUtils.getTestIdAttribute('todo', 'item');
+
+  return (
+    <TodoText $completed={completed} {...todoTestId}>
+      {value}
+    </TodoText>
+  );
 };

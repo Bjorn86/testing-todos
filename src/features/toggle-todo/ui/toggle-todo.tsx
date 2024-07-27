@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { updateTodoStatus } from 'shared/api/firebase';
+import testUtils from 'shared/lib/test';
 import { Icon, Icons } from 'shared/ui/icon';
 import { TEXT } from '../model/constants';
 
@@ -20,6 +21,8 @@ interface Props {
 }
 
 export const ToggleTodo = ({ completed, id }: Props) => {
+  const switcherTestId = testUtils.getTestIdAttribute('switcher', 'todo');
+
   const handleClick = () => {
     updateTodoStatus(id, !completed);
   };
@@ -29,11 +32,12 @@ export const ToggleTodo = ({ completed, id }: Props) => {
       type='button'
       onClick={handleClick}
       aria-label={completed ? TEXT.completed : TEXT.uncompleted}
+      {...switcherTestId}
     >
       {completed ? (
-        <Icon icon={Icons.CHECK_CIRCLE} width='24px' height='24px' />
+        <Icon icon={Icons.CHECK_CIRCLE} width='24px' height='24px' testId={'completed'} />
       ) : (
-        <Icon icon={Icons.CIRCLE} width='24px' height='24px' />
+        <Icon icon={Icons.CIRCLE} width='24px' height='24px' testId={'uncompleted'} />
       )}
     </Switcher>
   );
